@@ -5,10 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Str;
->>>>>>> lesson-2
 
 class User extends Authenticatable
 {
@@ -40,8 +37,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-<<<<<<< HEAD
-=======
+
 
     public function questions()
     {
@@ -53,5 +49,4 @@ class User extends Authenticatable
         $this->attributes['slug'] = str_slug($value);
     }
 
->>>>>>> lesson-2
 }
