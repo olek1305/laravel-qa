@@ -11100,3 +11100,38 @@ a.text-dark:focus {
   }
 }
 
+.counters {
+  margin-right: 30px;
+  font-size: 10px;
+  text-align: center;
+}
+
+strong {
+  display: block;
+  font-size: 2em;
+}
+
+.vote,
+.answer {
+  width: 60px;
+  height: 60px;
+}
+
+.status.unanswered {
+  border: none;
+}
+
+.status.answered {
+  border: 1px solid #38c172;
+  color: #38c172;
+}
+
+.status.answered-accepted {
+  background: #38c172;
+  color: #fff;
+}
+
+.status .view {
+  margin-top: 10px;
+}
+
