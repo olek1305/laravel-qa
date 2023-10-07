@@ -14,9 +14,9 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5); // latest() is a query scope
+        $questions = Question::with('user')->paginate(5); // latest() is a query scope
 
-        return view('questions.index', compact('questions'));
+         return view('questions.index', compact('questions'));
     }
 
     /**
