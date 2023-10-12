@@ -64,7 +64,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view ('questions.edit', compact('question')); // compact('question') is the same as ['question' => $question]
     }
 
     /**
@@ -76,7 +76,9 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update ( $request->only('title', 'body') );
+
+        return redirect()->route('questions.index')->with('success', "Your question has been updated.");
     }
 
     /**
