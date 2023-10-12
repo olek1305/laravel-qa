@@ -11500,3 +11500,7 @@ strong {
   margin-top: 10px;
 }
 
+.status .form-delete {
+  display: inline;
+}
+
