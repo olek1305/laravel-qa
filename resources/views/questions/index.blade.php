@@ -37,8 +37,6 @@
                                             @can ('update', $question)
                                                 <a href="{{ route('questions.edit', $question->id)  }}" class="btn btn-sm btn-outline-info text-dark">Edit</a>
                                             @endcan
-
-
                                             @can('delete', $question)
                                             <form class="form-delete" method="post" action="{{ route('questions.destroy', $question->id) }}">
                                                 @method('DELETE')
