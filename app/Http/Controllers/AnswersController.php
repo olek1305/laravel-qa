@@ -65,13 +65,20 @@ class AnswersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Answer  $answer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Question $question, Answer $answer)
     {
         $this->authorize('delete', $answer);
 
         $answer->delete();
+
+        if (request()->exceptsJson()) {
+            return response()->json([
+                'message' => "Your answer has been removed"
+            ]);
+        }
+
 
         return back()->with('success', "Your answer has been removed");
     }
