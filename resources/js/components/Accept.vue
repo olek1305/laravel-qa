@@ -43,7 +43,7 @@
             },
 
             accepted () {
-                return this.canAccept && this.isBest;
+                return !this.canAccept && this.isBest;
             },
 
             classes () {
