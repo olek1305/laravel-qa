@@ -75,7 +75,7 @@ export default {
                 this.$toast.success(res.data.message, "Success",
                     {timeout: 3000, position: 'bottomLeft'});
 
-                this.count += res.data.votesCount;
+                this.count = res.data.votesCount;
             });
         }
     }
