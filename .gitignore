@@ -27,8 +27,15 @@ public/hot
 public_html/storage
 public_html/hot
 
+# Laravel 6
+public/css
+public/js
+
 storage/*.key
 
+# PHPStorm
 /.vagrant
 .idea
 tests
+.idea/php.xml
+.idea/phpspec.xml
