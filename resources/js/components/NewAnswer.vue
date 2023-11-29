@@ -33,7 +33,7 @@ export default {
             .catch(error => {
                 this.$toast.error(error.response.data.message, "Error");
             })
-            .then(({ data }) => {
+            .then(({data}) => {
                 this.$toast.success(data.message, "Success");
                 this.body = '';
                 this.$emit('created', data.answer);
