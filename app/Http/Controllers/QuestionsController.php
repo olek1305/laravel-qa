@@ -18,10 +18,10 @@ class QuestionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $questions = Question::with('user')->latest()->paginate(10);
 
-        return view('questions.index', compact('questions'));        
+        return view('questions.index', compact('questions'));
     }
 
     /**
@@ -79,13 +79,20 @@ class QuestionsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
         $this->authorize("update", $question);
 
         $question->update($request->only('title', 'body'));
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => "Your question has been updated.",
+                'body_html' => $question->body_html
+            ]);
+        }
 
         return redirect('/questions')->with('success', "Your question has been updated.");
     }
@@ -94,13 +101,19 @@ class QuestionsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Question $question)
     {
         $this->authorize("delete", $question);
 
         $question->delete();
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => "Your question has been deleted."
+            ]);
+        }
 
         return redirect('/questions')->with('success', "Your question has been deleted.");
     }
