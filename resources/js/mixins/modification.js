@@ -1,8 +1,11 @@
+import highlight from './highlight';
+
 export default {
+    mixins: [highlight],
+
     data () {
         return {
-            editing: false,
-
+            editing: false
         }
     },
 
@@ -21,21 +24,22 @@ export default {
         restoreFromCache () {},
 
         update () {
-            axios.put (this.endpoint, this.payload())
-            .catch(({response}) => {
-                this.$toast.error(response.data.message, "Error", {timeout: 3000, position: 'topRight'});
-            })
-            .then(({data}) => {
-                this.bodyHtml = data.body_html;
-                this.$toast.success(data.message, "Success", {timeout: 3000, position: 'topRight'});
-                this.editing = false;
-            })
+            axios.put(this.endpoint, this.payload())
+                .catch(({response}) => {
+                    this.$toast.error(response.data.message, "Error", { timeout: 3000 });
+                })
+                .then(({data}) => {
+                    this.bodyHtml = data.body_html;
+                    this.$toast.success(data.message, "Success", { timeout: 3000 });
+                    this.editing = false;
+                })
+                .then(() => this.highlight());
         },
 
         payload () {},
 
         destroy () {
-            this.$toast.error('Are you sure about that?', "Confirm", {
+            this.$toast.question('Are you sure about that?', "Confirm", {
                 timeout: 20000,
                 close: false,
                 overlay: true,
@@ -49,15 +53,15 @@ export default {
 
                         this.delete();
 
-                        instance.hide({transitionOut: 'fadeOut'}, toast, 'button');
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 
                     }, true],
                     ['<button>NO</button>', function (instance, toast) {
 
-                        instance.hide({transitionOut: 'fadeOut'}, toast, 'button');
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 
                     }],
-                ],
+                ]
             });
         },
 
