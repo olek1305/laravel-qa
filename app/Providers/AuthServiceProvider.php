@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Question;
 use App\Answer;
 use App\Policies\AnswerPolicy;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,12 +31,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        \Gate::define('update-question', function($user, $question){
-            return $user->id == $question->user_id;
-        });
+//        \Gate::define('update-question', function($user, $question){
+//            return $user->id == $question->user_id;
+//        });
+//
+//        \Gate::define('delete-question', function($user, $question){
+//            return $user->id == $question->user_id;
+//        });
 
-        \Gate::define('delete-question', function($user, $question){
-            return $user->id == $question->user_id;
-        });
+        Passport::routes();
     }
 }
