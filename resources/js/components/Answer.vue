@@ -3,7 +3,6 @@
         <vote :model="answer" name="answer"></vote>
 
         <div class="media-body">
-            <Preview :body="body" :showPreview="showPreview"></Preview>
             <form v-show="authorize('modify', answer) && editing" @submit.prevent="update">
                 <div class="form-group">
                     <m-editor :body="body" :name="uniqueName">
@@ -34,14 +33,11 @@
 
 <script>
 import modification from '../mixins/modification'
-import Preview from "./Preview.vue";
 
 export default {
     props: ['answer'],
 
     mixins: [modification],
-
-    components: { Preview },
 
     data () {
         return {
@@ -76,9 +72,6 @@ export default {
                 });
         },
 
-        showPreview() {
-            this.showPreview = true;
-        },
     },
 
     computed: {
