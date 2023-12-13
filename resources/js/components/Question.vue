@@ -10,7 +10,6 @@
                     <hr>
 
                     <div class="media">
-
                         <div class="media-body">
                             <div class="form-group">
                                 <m-editor :body="body" :name="uniqueName">
@@ -34,9 +33,9 @@
 
                     <hr>
 
-
                     <div class="media">
                         <vote :model="question" name="question"></vote>
+
                         <div class="media-body">
                             <div v-html="bodyHtml" ref="bodyHtml"></div>
                             <div class="row">
@@ -61,6 +60,7 @@
 
 <script>
 import modification from '../mixins/modification';
+
 export default {
     props: ['question'],
 
@@ -119,7 +119,7 @@ export default {
             setTimeout(() => {
                 window.location.href = "/questions";
             }, 3000);
-        },
-    },
+        }
+    }
 }
 </script>
