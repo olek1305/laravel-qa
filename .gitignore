@@ -28,6 +28,10 @@ public_html/storage
 public_html/hot
 
 # Laravel 6
+/public/css
+/public/js
+
+# test
 public/css
 public/js
 
