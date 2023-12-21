@@ -19,7 +19,7 @@ const routes = [
     {
         path: "/questions/create",
         component: CreateQuestionPage,
-        name: 'question.creates'
+        name: 'questions.create'
     },
     {
         path: "/questions/:id/edit",
@@ -37,7 +37,8 @@ const routes = [
     {
         path: "/questions/:slug",
         component: QuestionPage,
-        name: 'question.show'
+        name: 'questions.show',
+        props: true
     },
     {
         path: "*",

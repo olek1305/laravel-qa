@@ -9,8 +9,8 @@
                         </div>
                         <hr>
                         <answer @deleted="remove(index)" v-for="(answer, index) in answers" :key="answer.id" :answer="answer"></answer>
-                        <div class="text-center mt-3" v-if="nextUrl">
-                            <button @click.prevent="fetch(nextUrl)" class="btn btn-outline-secondary" type="submit">Load more</button>
+                        <div class="text-center mt-3" v-if="theNextUrl">
+                            <button @click.prevent="fetch(theNextUrl)" class="btn btn-outline-secondary" type="submit">Load more answers</button>
                         </div>
                     </div>
                 </div>
@@ -24,6 +24,7 @@
 import Answer from "./Answer.vue";
 import NewAnswer from "./NewAnswer.vue";
 import highlight from "../mixins/highlight";
+import EventBus from "../event-bus";
 export default {
     props: ['question'],
 
@@ -35,7 +36,8 @@ export default {
             count: this.question.answers_count,
             answers: [],
             answerIds: [],
-            nextUrl: null
+            nextUrl: null,
+            excludeAnswers: []
         }
     },
 
@@ -45,10 +47,14 @@ export default {
 
     methods: {
         add (answer) {
+            this.excludeAnswers.push(answer);
             this.answers.push(answer);
             this.count++;
             this.$nextTick(() => {
-                this.highlight(`answer-${answer.id}`);
+            this.highlight(`answer-${answer.id}`);
+            if (this.count === 1) {
+                EventBus.$emit('answers-count-changed', this.count);
+            }
             });
 
         },
@@ -56,6 +62,10 @@ export default {
         remove (index) {
             this.answers.splice(index, 1);
             this.count--;
+            EventBus.$emit('answers-count-changed', this.count)
+            if (this.count === 0) {
+                EventBus.$emit('answers-count-changed', this.count);
+            }
         },
 
         fetch (endpoint) {
@@ -65,7 +75,7 @@ export default {
             .then(({ data }) =>{
                 this.answerIds = data.data.map(a => a.id);
                 this.answers.push( ... data.data)
-                this.nextUrl = data.next_page_url;
+                this.nextUrl = data.links.next;
             })
                 .then(() => {
                     this.answerIds.forEach(id => {
@@ -79,6 +89,14 @@ export default {
         title () {
             return this.count + ' ' + (this.count > 1 ? 'Answers' : 'Answer');
         },
+
+        theNextUrl () {
+            if (this.nextUrl && this.excludeAnswers.length) {
+                return this.nextUrl +
+                    this.excludeAnswers.map(a => '&excludes[]=' + a.id).join('');
+            }
+            return this.nextUrl;
+        }
     },
 
     components: {
