@@ -9,16 +9,17 @@
                                 <router-link exact :to="{ name: 'my-posts'}" class="nav-link">All</router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link exact :to="{ name: 'my-posts', query: { type: 'questions' } }" class="nav-link">Questions</router-link>>
+                                <router-link exact :to="{ name: 'my-posts', query: { type: 'questions' } }" class="nav-link">Questions</router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link exact :to="{ name: 'my-posts', query: { type: 'answers' } }" class="nav-link">Answers</router-link>>
+                                <router-link exact :to="{ name: 'my-posts', query: { type: 'answers' } }" class="nav-link">Answers</router-link>
 
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
-                        <ul class="list-group list-group-flush" v-if="posts.length">
+                        <spinner v-if="$root.loading"></spinner>
+                        <ul class="list-group list-group-flush" v-else-if="posts.length">
                             <li class="list-group-item" v-for="(post, index) in posts" :key="index">
                                 <div class="row">
                                     <div class="col">

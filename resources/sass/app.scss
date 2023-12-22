@@ -106,3 +106,13 @@ form.form-delete {
 body {
     background: #f5f8fa;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .3s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
