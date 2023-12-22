@@ -114,10 +114,10 @@ export default {
 
         delete () {
             axios.delete(this.endpoint)
-            .then(({data}) => {
-                this.$toast.success(data.message, "Success", { timeout: 2000 });
-                this.$router.push({ name: 'questions' });
-            });
+                .then(({data}) => {
+                    this.$toast.success(data.message, "Success", { timeout: 2000 });
+                    this.$router.push({ name: 'questions' });
+                });
         }
     },
 

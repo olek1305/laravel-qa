@@ -78,7 +78,8 @@ class QuestionsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy(Question $question)
     {
@@ -86,12 +87,8 @@ class QuestionsController extends Controller
 
         $question->delete();
 
-        if (request()->expectsJson()) {
-            return response()->json([
-                'message' => "Your question has been deleted."
-            ]);
-        }
-
-        return redirect('/questions')->with('success', "Your question has been deleted.");
+        return response()->json([
+            'message' => "Your question has been deleted."
+        ]);
     }
 }
