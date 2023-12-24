@@ -13,7 +13,6 @@
                             </li>
                             <li class="nav-item">
                                 <router-link exact :to="{ name: 'my-posts', query: { type: 'answers' } }" class="nav-link">Answers</router-link>
-
                             </li>
                         </ul>
                     </div>
@@ -34,7 +33,7 @@
                         <div class="alert-warning" v-else>
                             <p>You have no any questions or answers</p>
                             <p>
-                                <router-link :to="{ name: 'questions.create '}">Ask Question</router-link>
+                                <router-link :to="{ name: 'questions.create'}">Ask Question</router-link>
                             </p>
                         </div>
                     </div>
@@ -99,3 +98,5 @@ export default {
         }
     }
 </style>
+<script setup>
+</script>
