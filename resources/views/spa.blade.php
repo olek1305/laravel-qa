@@ -33,8 +33,20 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                        <router-link class="nav-item" tag="li" :to="{ name: 'questions' }"><a class="nav-link">Questions</a></router-link>
-                        <router-link class="nav-item" tag="li" :to="{ name: 'my-posts' }"><a class="nav-link">My Posts</a></router-link>
+                        <router-link class="nav-item" :to="{ name: 'questions' }">
+                            <li>
+                                <a class="nav-link">
+                                Questions
+                                </a>
+                            </li>
+                        </router-link>
+                        <router-link class="nav-item" :to="{ name: 'my-posts' }">
+                            <li>
+                                <a class="nav-link">
+                                My Posts
+                                </a>
+                            </li>
+                        </router-link>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
