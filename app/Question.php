@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Question extends Model
 {
@@ -11,6 +12,7 @@ class Question extends Model
     protected $fillable = ['title', 'body'];
 
     protected $appends = ['created_date', 'is_favorited', 'favorites_count', 'body_html'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -21,10 +23,11 @@ class Question extends Model
         $this->attributes['slug'] = str_slug($value);
     }
 
-//    public function setBodyAttribute($value)
-//    {
-//        $this->attributes['body'] = clean($value);
-//    }
+    // public function setBodyAttribute($value)
+    // {
+    //     $this->attributes['body'] = clen($value);
+    // }
+
     public function getUrlAttribute()
     {
         return route("questions.show", $this->slug);
@@ -32,15 +35,13 @@ class Question extends Model
 
     public function getCreatedDateAttribute()
     {
-        return $this->created_at->diffForHumans();
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 
     public function getStatusAttribute()
     {
-        if($this->answers_count > 0)
-        {
-            if($this->best_answer_id)
-            {
+        if ($this->answers_count > 0) {
+            if ($this->best_answer_id) {
                 return "answered-accepted";
             }
             return "answered";
@@ -56,13 +57,11 @@ class Question extends Model
     public function answers()
     {
         return $this->hasMany(Answer::class)->orderBy('votes_count', 'DESC');
-        // $question->answers()->count()
-        // foreach($question->answers as $answer)
     }
 
     public function acceptBestAnswer(Answer $answer)
     {
-        $this->attributes['best_answer_id'] = $answer->id;
+        $this->best_answer_id = $answer->id;
         $this->save();
     }
 
@@ -73,7 +72,7 @@ class Question extends Model
 
     public function isFavorited()
     {
-        return $this->favorites()->where('user_id', request()->auth()->id())->count() > 0;
+        return $this->favorites()->where('user_id', auth()->id())->count() > 0;
     }
 
     public function getIsFavoritedAttribute()
@@ -91,9 +90,9 @@ class Question extends Model
         return $this->excerpt(250);
     }
 
-    public function excerpt($lenght)
+    public function excerpt($length)
     {
-        return str_limit(strip_tags($this->bodyHtml()), $lenght);
+        return str_limit(strip_tags($this->bodyHtml()), $length);
     }
 
     private function bodyHtml()
