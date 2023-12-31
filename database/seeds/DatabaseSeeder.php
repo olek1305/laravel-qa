@@ -1,6 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
+use FavoritesTableSeeder;
 use Illuminate\Database\Seeder;
+use UsersQuestionsAnswersTableSeeder;
+use VotablesTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {

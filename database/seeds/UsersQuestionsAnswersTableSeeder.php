@@ -18,10 +18,10 @@ class UsersQuestionsAnswersTableSeeder extends Seeder
         factory(App\User::class, 3)->create()->each(function($u) {
             $u->questions()
                 ->saveMany(
-                    factory(App\Question::class, rand(1, 5))->make()
+                    factory(\App\Models\Question::class, rand(1, 5))->make()
                 )
                 ->each(function ($q) {
-                    $q->answers()->saveMany(factory(App\Answer::class, rand(1, 5))->make());
+                    $q->answers()->saveMany(factory(\App\Models\Answer::class, rand(1, 5))->make());
                 });
         });
     }

@@ -1,0 +1,10 @@
+{
+    "plugins": [
+        ["prismjs", {
+            "languages": ["php", "javascript", "css"],
+            "plugins": [],
+            "theme": "coy",
+            "css": true
+        }]
+    ]
+}

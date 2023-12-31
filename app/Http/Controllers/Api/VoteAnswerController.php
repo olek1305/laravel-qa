@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Answer;
+use App\Models\Answer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

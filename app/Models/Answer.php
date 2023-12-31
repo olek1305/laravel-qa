@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\VotableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model

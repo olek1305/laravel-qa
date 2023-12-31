@@ -2,12 +2,12 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "mix --production"
     },
     "devDependencies": {
         "@fortawesome/fontawesome": "^1.1.8",
@@ -15,23 +15,27 @@
         "@fortawesome/fontawesome-svg-core": "^6.5.1",
         "@fortawesome/free-solid-svg-icons": "^6.5.1",
         "autosize": "^6.0.1",
-        "axios": "^0.19",
+        "axios": "^0.21",
+        "babel-plugin-prismjs": "^2.1.0",
         "bootstrap": "4.1.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
-        "laravel-mix": "^4.1.4",
-        "lodash": "^4.17.13",
+        "laravel-mix": "^6.0.6",
         "markdown-it": "^13.0.2",
         "markdown-it-prism": "^2.3.0",
         "popper.js": "^1.12",
+        "postcss": "^8.1.14",
+        "postcss-sass-loader": "^1.1.0",
         "resolve-url-loader": "^2.3.1",
-        "sass": "1.32.*",
-        "sass-loader": "7.*",
-        "vue": "^2.5.17",
+        "sass-loader": "^13.3.3",
         "vue-izitoast": "^1.2.1",
+        "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "lodash": "^4.17.19",
+        "prismjs": "^1.29.0",
+        "vue": "^2.7.16",
         "vue-router": "^3.6.5"
     }
 }

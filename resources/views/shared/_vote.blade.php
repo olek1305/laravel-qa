@@ -1,9 +1,9 @@
-@if ($model instanceof App\Question)
+@if ($model instanceof \App\Models\Question)
     @php
         $name = 'question';
         $firstURISegment = 'questions';
     @endphp
-@elseif ($model instanceof App\Answer)
+@elseif ($model instanceof \App\Models\Answer)
     @php
         $name = 'answer';
         $firstURISegment = 'answers';
@@ -38,9 +38,9 @@
         <input type="hidden" name="vote" value="-1">
     </form>
 
-    @if ($model instanceof App\Question)
-        <favorite :question="{{ $model }}" ></favorite>
-    @elseif ($model instanceof App\Answer)
-        <accept :answer="{{ $model }}" ></accept>
+    @if ($model instanceof \App\Models\Question)
+        <favorite :question="{{ $model }}"></favorite>
+    @elseif ($model instanceof \App\Models\Answer)
+        <accept :answer="{{ $model }}"></accept>
     @endif
 </div>

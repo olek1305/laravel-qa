@@ -1,13 +1,13 @@
-import QuestionPage from "./pages/QuestionPage.vue";
-
+import Vue from "vue";
 require('./bootstrap');
 require('./fontawesome');
 
 window.Vue = require('vue');
 
 import VueIziToast from 'vue-izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import Prism from "prismjs";
 import Authorization from './authorization/authorize';
+import QuestionPage from "./pages/QuestionPage.vue";
 import router from './router'
 import Spinner from './components/Spinner.vue'
 

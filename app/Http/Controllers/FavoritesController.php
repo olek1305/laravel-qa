@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Question;
+use App\Models\Question;
 
 class FavoritesController extends Controller
 {

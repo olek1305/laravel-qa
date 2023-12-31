@@ -8,6 +8,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+    background: #f5f8fa;
+}
+
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -101,10 +105,6 @@ form.form-delete {
 
 [v-cloak] {
     display: none;
-}
-
-body {
-    background: #f5f8fa;
 }
 
 .fade-enter-active,

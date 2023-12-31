@@ -5,8 +5,9 @@ namespace App\Providers;
 use App\Policies\QuestionPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Question;
-use App\Answer;
+
+use App\Models\Answer;
+use App\Models\Question;
 use App\Policies\AnswerPolicy;
 use Laravel\Passport\Passport;
 
@@ -18,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        'App\Models\Model' => 'App\Policies\ModelPolicy',
         Question::class => QuestionPolicy::class,
         Answer::class => AnswerPolicy::class,
     ];
@@ -29,8 +31,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
 //        \Gate::define('update-question', function($user, $question){
 //            return $user->id == $question->user_id;
 //        });
@@ -39,6 +39,10 @@ class AuthServiceProvider extends ServiceProvider
 //            return $user->id == $question->user_id;
 //        });
 
-        Passport::routes();
+        $this->registerPolicies();
+
+        if (! $this->app->routesAreCached()) {
+            Passport::routes();
+        }
     }
 }

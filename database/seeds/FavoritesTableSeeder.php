@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Question;
+use App\Models\Question;
 
 class FavoritesTableSeeder extends Seeder
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Answer;
-use App\Question;
+use App\Models\Answer;
+use App\Models\Question;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AnswerResource;
@@ -43,7 +43,7 @@ class AnswersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Answer  $answer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Question $question, Answer $answer)
@@ -63,7 +63,7 @@ class AnswersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Question $question, Answer $answer)

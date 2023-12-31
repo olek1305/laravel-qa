@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Question;
-use App\Answer;
+use App\Models\Question;
+use App\Models\Answer;
 
 class VotablesTableSeeder extends Seeder
 {

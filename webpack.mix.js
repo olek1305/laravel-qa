@@ -11,6 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js').vue({
+    extractStyles: true,
+    globalStyles: false,
+});
+mix.sass('resources/sass/app.scss', 'public/css')
     .copy('node_modules/prismjs/themes', 'public/css/prismjs-themes')
-   .sass('resources/sass/app.scss', 'public/css');
+    .copy('node_modules/izitoast/dist/css/iziToast.css', 'public/css/izitoast');
