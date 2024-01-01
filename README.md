@@ -1,2 +1,2 @@
 # laravel-qa
-Question &amp; answer app built with laravel 6
+Question &amp; answer app built with laravel 8
