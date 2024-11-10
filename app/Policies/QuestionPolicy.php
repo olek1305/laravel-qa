@@ -25,7 +25,7 @@ class QuestionPolicy
     /**
      * Determine whether the user can delete the question.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Question  $question
      * @return mixed
      */

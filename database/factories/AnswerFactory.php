@@ -1,13 +1,20 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
+use App\Models\Answer;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(\App\Models\Answer::class, function (Faker $faker) {
-    return [
-        'body' => $faker->paragraphs(rand(3, 7), true),
-        'user_id' =>  App\User::pluck('id')->random(),
-        // 'votes_count' => rand(0, 5),
-    ];
-});
+class AnswerFactory extends Factory
+{
+    protected $model = Answer::class;
+
+    public function definition()
+    {
+        return [
+            'body' => $this->faker->paragraphs(rand(3, 7), true),
+            'user_id' => User::inRandomOrder()->first()->id,
+        ];
+    }
+}

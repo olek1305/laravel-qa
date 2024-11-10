@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\VotableTrait;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    use VotableTrait;
+    use VotableTrait, HasFactory;
 
     protected $fillable = ['title', 'body'];
 

@@ -11,7 +11,7 @@
         "php": "^7.3|^8.0",
         "doctrine/dbal": "^3.7",
         "erusev/parsedown": "^1.7",
-        "fruitcake/laravel-cors": "^2.0",
+        "fakerphp/faker": "^1.24",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/helpers": "^1.6",
@@ -20,12 +20,12 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3",
-        "mews/purifier": "^3.4"
+        "mews/purifier": "^3.4",
+        "symfony/mailer": "^6.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
         "facade/ignition": "^2.5",
-        "fzaninotto/faker": "^1.9.1",
         "phpunit/phpunit": "^9.5.10",
         "nunomaduro/collision": "^5.10",
         "mockery/mockery": "^1.4.4",

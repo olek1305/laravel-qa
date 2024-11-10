@@ -30,7 +30,7 @@ class AnswerPolicy
     /**
      * Determine whether the user can delete the answer.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Answer  $answer
      * @return mixed
      */

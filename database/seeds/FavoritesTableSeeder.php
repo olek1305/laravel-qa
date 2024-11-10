@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use App\User;
 use App\Models\Question;
+use Illuminate\Support\Facades\DB;
 
 class FavoritesTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('favorites')->delete();
+        DB::table('favorites')->delete();
 
         $users = User::pluck('id')->all();
         $numberOfUsers = count($users);

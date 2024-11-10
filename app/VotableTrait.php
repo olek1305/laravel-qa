@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use App\Models\User;
+
 trait VotableTrait
 {
     public function votes()
